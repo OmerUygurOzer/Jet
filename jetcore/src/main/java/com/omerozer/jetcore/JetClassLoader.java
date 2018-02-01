@@ -8,7 +8,13 @@ import java.util.Map;
 /**
  * Created by omerozer on 1/30/18.
  */
+
 class JetClassLoader {
+
+    private static final String JET_FACTORY = "JetFactory";
+    private static final String JET_EVENT_INDEX = "com.omerozer.jetcore.JetEventIndex";
+    private static final String ANDROID_THREAD_SWITCHER = "com.omerozer.jetcore.AndroidThreadSwitcher";
+
     private Map<Class<?>,Constructor<?>> CACHE = new LinkedHashMap<>();
 
     private Constructor<?> getConstructorForBus(Class<?> clazz)  {
@@ -19,60 +25,88 @@ class JetClassLoader {
         ClassLoader classLoader = clazz.getClassLoader();
 
         Constructor<?> constructor = null;
+
         try {
             constructor = classLoader.loadClass(clazz.getCanonicalName()+"_Jet").
                     getConstructor(Object.class);
-        } catch (NoSuchMethodException | ClassNotFoundException e) {
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
 
         CACHE.put(clazz,constructor);
         return constructor;
     }
 
-    public EventHandler initializeEventHandlerForObject(Object object)  {
+    EventHandler initializeEventHandlerForObject(Object object)  {
         Constructor<?> busConstructor = getConstructorForBus(object.getClass());
+
         try {
             return (EventHandler) busConstructor.newInstance(object);
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
+
         return null;
     }
 
-    Constructor<?> getConstructorForEventIndex(){
+    private Constructor<?> getConstructorForEventIndex(){
         try {
-            return JetEventIndexInterface.class.getClassLoader().loadClass("com.omerozer.jetcore.JetEventIndex").getConstructor();
-        } catch (ClassNotFoundException | NoSuchMethodException e) {
+            return JetEventIndexInterface.class.getClassLoader().loadClass(JET_EVENT_INDEX).getConstructor();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
         return null;
     }
 
-    public JetEventIndexInterface createEventIndex(){
+    JetEventIndexInterface createEventIndex(){
         try {
             return (JetEventIndexInterface)getConstructorForEventIndex().newInstance();
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
+
         return null;
     }
 
-    Constructor<?> getConstructorForAndroidThreadSwitcher(){
+    private Constructor<?> getConstructorForAndroidThreadSwitcher(){
+
         try {
-            return ThreadSwitcherInterface.class.getClassLoader().loadClass("com.omerozer.jetcore.AndroidThreadSwitcher").getConstructor();
-        } catch (ClassNotFoundException | NoSuchMethodException e) {
+            return ThreadSwitcherInterface.class.getClassLoader().loadClass(ANDROID_THREAD_SWITCHER).getConstructor();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
         return null;
     }
 
-    public ThreadSwitcherInterface createAndroidThreadSwitcher(){
-        try {
-            return (ThreadSwitcherInterface) getConstructorForAndroidThreadSwitcher().newInstance();
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
-        }
-        return null;
+     ThreadSwitcherInterface createAndroidThreadSwitcher(){
+
+         try {
+             return (ThreadSwitcherInterface) getConstructorForAndroidThreadSwitcher().newInstance();
+         } catch (InstantiationException e) {
+             e.printStackTrace();
+         } catch (IllegalAccessException e) {
+             e.printStackTrace();
+         } catch (InvocationTargetException e) {
+             e.printStackTrace();
+         }
+
+         return null;
     }
 }
