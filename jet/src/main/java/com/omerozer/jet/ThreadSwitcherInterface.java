@@ -1,4 +1,4 @@
-package com.omerozer.jetcore;
+package com.omerozer.jet;
 
 /**
  * Created by omerozer on 1/29/18.

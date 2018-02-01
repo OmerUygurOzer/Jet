@@ -27,7 +27,7 @@ class JetFileStrings {
    static final String THREAD_SWITCHER_INTERFACE = "com.omerozer.jetcore.ThreadSwitcherInterface";
    static final String FACTORY_INTERFACE = "com.omerozer.jetcore.JetFactoryInterface";
    static final String EVENT_INDEX_INTERFACE = "com.omerozer.jetcore.JetEventIndexInterface";
-   static final String EVENT_HANDLER_ABSTRACT_CLASS = "com.omerozer.jetcore.EventHandler";
+   static final String EVENT_HANDLER_ABSTRACT_CLASS = "com.omerozer.jet.EventHandler";
 
    static String createStringArrayField(Collection<String> strings){
        String[] stringsArray = new String[strings.size()];

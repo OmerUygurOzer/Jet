@@ -1,4 +1,4 @@
-package com.omerozer.jetcore;
+package com.omerozer.jet;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

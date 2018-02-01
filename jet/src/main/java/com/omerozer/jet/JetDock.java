@@ -1,4 +1,4 @@
-package com.omerozer.jetcore;
+package com.omerozer.jet;
 
 import java.util.*;
 
