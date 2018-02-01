@@ -1,6 +1,5 @@
 package com.omerozer.jetprocessor;
 
-import com.google.auto.service.AutoService;
 import com.omerozer.jetcore.EventError;
 import com.omerozer.jetcore.EventSuccess;
 
@@ -9,14 +8,12 @@ import javax.lang.model.SourceVersion;
 import javax.lang.model.element.TypeElement;
 import javax.tools.Diagnostic;
 
-import java.util.Collections;
 import java.util.Set;
 
 /**
  * Created by omerozer on 1/26/18.
  */
 
-@AutoService(Processor.class)
 public class JetProcessor extends AbstractProcessor {
 
 
