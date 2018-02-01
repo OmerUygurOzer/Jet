@@ -1,6 +1,5 @@
 package com.omerozer.jetprocessor;
 
-import javax.lang.model.element.ExecutableElement;
 import javax.lang.model.element.TypeElement;
 
 import java.util.HashMap;

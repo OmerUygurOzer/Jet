@@ -1,7 +1,7 @@
 package com.omerozer.jetprocessor;
 
-import com.omerozer.jetcore.EventError;
-import com.omerozer.jetcore.EventSuccess;
+import com.omerozer.jet.EventError;
+import com.omerozer.jet.EventSuccess;
 
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;

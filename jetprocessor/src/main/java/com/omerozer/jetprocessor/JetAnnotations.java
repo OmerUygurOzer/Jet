@@ -13,8 +13,8 @@ class JetAnnotations {
     static Set<String> getAll() {
         return new LinkedHashSet<String>(
                 Arrays.asList(
-                        "com.omerozer.jetcore.EventSuccess",
-                             "com.omerozer.jetcore.EventError"
+                        "com.omerozer.jet.EventSuccess",
+                             "com.omerozer.jet.EventError"
                 ));
     }
 }

@@ -1,4 +1,4 @@
-package com.omerozer.jet;
+package com.omerozer.jetprocessor;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

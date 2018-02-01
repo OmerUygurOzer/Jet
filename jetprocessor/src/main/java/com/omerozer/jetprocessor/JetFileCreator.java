@@ -1,8 +1,8 @@
 package com.omerozer.jetprocessor;
 
-import com.omerozer.jetcore.EventError;
-import com.omerozer.jetcore.EventSuccess;
-import com.omerozer.jetcore.NoError;
+import com.omerozer.jet.EventError;
+import com.omerozer.jet.EventSuccess;
+import com.omerozer.jet.NoError;
 
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.lang.model.element.Element;

@@ -9,7 +9,7 @@ import java.util.Collection;
 class JetFileStrings {
 
    static final String JET_WARNING_COMMENT = "//Created by Jet. Do NOT alter contents of this class.";
-   static final String JET_CORE_PACKAGE = "package com.omerozer.jetcore;";
+   static final String JET_CORE_PACKAGE = "package com.omerozer.jet;";
    static final String JET_POSTFIX = "_Jet";
    static final String JET_FACTORY = "JetFactory";
    static final String JET_EVENT_INDEX = "JetEventIndex";
@@ -24,9 +24,9 @@ class JetFileStrings {
    static final String EVENT_FAILURE = "handleError";
    static final String OBJECT_CLASS = Object.class.getCanonicalName();
    static final String STRING_CLASS = String.class.getCanonicalName();
-   static final String THREAD_SWITCHER_INTERFACE = "com.omerozer.jetcore.ThreadSwitcherInterface";
-   static final String FACTORY_INTERFACE = "com.omerozer.jetcore.JetFactoryInterface";
-   static final String EVENT_INDEX_INTERFACE = "com.omerozer.jetcore.JetEventIndexInterface";
+   static final String THREAD_SWITCHER_INTERFACE = "com.omerozer.jet.ThreadSwitcherInterface";
+   static final String FACTORY_INTERFACE = "com.omerozer.jet.JetFactoryInterface";
+   static final String EVENT_INDEX_INTERFACE = "com.omerozer.jet.JetEventIndexInterface";
    static final String EVENT_HANDLER_ABSTRACT_CLASS = "com.omerozer.jet.EventHandler";
 
    static String createStringArrayField(Collection<String> strings){

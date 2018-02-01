@@ -1,4 +1,4 @@
-package com.omerozer.jet;
+package com.omerozer.jetprocessor;
 
 import org.junit.Test;
 

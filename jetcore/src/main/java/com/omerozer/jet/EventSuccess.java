@@ -1,4 +1,4 @@
-package com.omerozer.jetcore;
+package com.omerozer.jet;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
