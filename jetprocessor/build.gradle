@@ -2,7 +2,7 @@ apply plugin: 'java-library'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':jetcore')
+    implementation project(path: ':jetcore')
 }
 
 sourceCompatibility = "1.7"
