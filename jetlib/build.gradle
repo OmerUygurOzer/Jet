@@ -5,7 +5,7 @@ group='com.github.OmerUygurOzer'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api project(path: ':jetannotations')
+    api project(':jetannotations')
 }
 
 sourceCompatibility = "1.7"
