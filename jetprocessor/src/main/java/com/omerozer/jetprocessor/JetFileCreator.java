@@ -9,6 +9,7 @@ import javax.lang.model.element.Element;
 import javax.lang.model.element.ExecutableElement;
 import javax.lang.model.element.TypeElement;
 import javax.tools.JavaFileObject;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.HashMap;
@@ -55,7 +56,8 @@ class JetFileCreator {
         }
         for (String event : events) {
             classDataMap.get(enclosingClass).getHandlerMethods(event).setSuccessMethod(method);
-            classDataMap.get(enclosingClass).getHandlerMethods(event).setNoError(method.getAnnotation(NoError.class) != null);
+            classDataMap.get(enclosingClass).getHandlerMethods(event).setNoError(
+                    method.getAnnotation(NoError.class) != null);
         }
 
     }
@@ -84,17 +86,20 @@ class JetFileCreator {
         JavaFileObject generatedClassFile = null;
 
         try {
-            generatedClassFile = processingEnvironment.getFiler().createSourceFile(JetFileStrings.JET_FACTORY);
+            generatedClassFile = processingEnvironment.getFiler().createSourceFile(
+                    JetFileStrings.JET_FACTORY);
             BufferedWriter bufferedWriter = new BufferedWriter(generatedClassFile.openWriter());
             JetFactoryCreator.createFactory(bufferedWriter, classDataMap);
             bufferedWriter.close();
 
-            generatedClassFile = processingEnvironment.getFiler().createSourceFile(JetFileStrings.JET_EVENT_INDEX);
+            generatedClassFile = processingEnvironment.getFiler().createSourceFile(
+                    JetFileStrings.JET_EVENT_INDEX);
             bufferedWriter = new BufferedWriter(generatedClassFile.openWriter());
             JetEventIndexCreator.createEventIndex(bufferedWriter, classDataMap);
             bufferedWriter.close();
 
-            generatedClassFile = processingEnvironment.getFiler().createSourceFile(AndroidFileStrings.ANDROID_THREAD_SWITCHER_SIMPLE);
+            generatedClassFile = processingEnvironment.getFiler().createSourceFile(
+                    AndroidFileStrings.ANDROID_THREAD_SWITCHER_SIMPLE);
             bufferedWriter = new BufferedWriter(generatedClassFile.openWriter());
             AndroidThreadSwitcherCreator.createSwitcher(bufferedWriter);
             bufferedWriter.close();
@@ -106,28 +111,21 @@ class JetFileCreator {
 
     }
 
-    private void createBusClasses(MappedClassData mappedClassData, ProcessingEnvironment processingEnvironment) {
+    private void createBusClasses(MappedClassData mappedClassData,
+            ProcessingEnvironment processingEnvironment) {
 
         TypeElement clazz = mappedClassData.enclosingClass;
 
         try {
-            JavaFileObject generatedClassFile = processingEnvironment.getFiler().createSourceFile(mappedClassData.enclosingClass.getSimpleName()+JetFileStrings.JET_POSTFIX );
+            JavaFileObject generatedClassFile = processingEnvironment.getFiler().createSourceFile(
+                    mappedClassData.enclosingClass.getSimpleName() + JetFileStrings.JET_POSTFIX);
             BufferedWriter bufferedWriter = new BufferedWriter(generatedClassFile.openWriter());
             bufferedWriter.newLine();
-            JetBusCreator.initClass(bufferedWriter, clazz);
-            JetBusCreator.createWeakParentField(bufferedWriter, clazz);
-            JetBusCreator.createConstructorForParent(bufferedWriter, clazz);
-            JetBusCreator.createParentGetter(bufferedWriter, clazz);
-            JetBusCreator.overrideEventSuccess(bufferedWriter, mappedClassData.handlerMethodsMap);
-            JetBusCreator.overrideEventFailure(bufferedWriter, mappedClassData.handlerMethodsMap);
-            JetBusCreator.createEventsGetter(bufferedWriter, mappedClassData.handlerMethodsMap);
-            JetBusCreator.createParentAccessor(bufferedWriter);
-            JetBusCreator.endClass(bufferedWriter);
+            JetBusCreator.createBusClass(bufferedWriter, clazz, mappedClassData.handlerMethodsMap);
             bufferedWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
     }
 }

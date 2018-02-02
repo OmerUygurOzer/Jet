@@ -48,7 +48,5 @@ public class AndroidThreadSwitcherCreator {
         bufferedWriter.append("handler.post(runnable);}");
         bufferedWriter.newLine();
         bufferedWriter.append("}");
-
-
     }
 }

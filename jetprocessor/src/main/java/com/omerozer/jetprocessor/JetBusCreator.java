@@ -12,7 +12,19 @@ import java.util.Map;
 
 class JetBusCreator {
 
-    static void initClass(BufferedWriter bufferedWriter,TypeElement typeElement) throws IOException {
+    static void createBusClass(BufferedWriter bufferedWriter,TypeElement clazz,Map<String,HandlerMethods> handlerMethodsMap)throws IOException{
+        initClass(bufferedWriter,clazz);
+        createWeakParentField(bufferedWriter,clazz);
+        createConstructorForParent(bufferedWriter, clazz);
+        createParentGetter(bufferedWriter, clazz);
+        overrideEventSuccess(bufferedWriter, handlerMethodsMap);
+        overrideEventFailure(bufferedWriter, handlerMethodsMap);
+        createEventsGetter(bufferedWriter,handlerMethodsMap);
+        createParentAccessor(bufferedWriter);
+        endClass(bufferedWriter);
+    }
+
+    private static void initClass(BufferedWriter bufferedWriter,TypeElement typeElement) throws IOException {
         PackageElement packageElement = (PackageElement)typeElement.getEnclosingElement();
         bufferedWriter.newLine();
         bufferedWriter.append("package ");
@@ -31,7 +43,7 @@ class JetBusCreator {
         bufferedWriter.newLine();
     }
 
-   static void createWeakParentField(BufferedWriter bufferedWriter,TypeElement typeElement) throws IOException {
+    private static void createWeakParentField(BufferedWriter bufferedWriter,TypeElement typeElement) throws IOException {
         bufferedWriter.newLine();
         bufferedWriter.append(JetFileStrings.PRIVATE);
         bufferedWriter.append(" ");
@@ -44,7 +56,7 @@ class JetBusCreator {
         bufferedWriter.newLine();
     }
 
-    static void createConstructorForParent(BufferedWriter bufferedWriter, TypeElement typeElement) throws IOException {
+    private static void createConstructorForParent(BufferedWriter bufferedWriter, TypeElement typeElement) throws IOException {
         bufferedWriter.newLine();
         bufferedWriter.append(JetFileStrings.PUBLIC);
         bufferedWriter.append(" ");
@@ -66,7 +78,7 @@ class JetBusCreator {
         bufferedWriter.append("}");
     }
 
-    static void createParentGetter(BufferedWriter bufferedWriter, TypeElement typeElement) throws IOException {
+    private static void createParentGetter(BufferedWriter bufferedWriter, TypeElement typeElement) throws IOException {
         bufferedWriter.newLine();
         bufferedWriter.append(JetFileStrings.PRIVATE);
         bufferedWriter.append(" ");
@@ -85,7 +97,7 @@ class JetBusCreator {
         bufferedWriter.append("}");
     }
 
-    static void overrideEventSuccess(BufferedWriter bufferedWriter,Map<String,HandlerMethods> handlerMethodsMap) throws IOException{
+    private static void overrideEventSuccess(BufferedWriter bufferedWriter,Map<String,HandlerMethods> handlerMethodsMap) throws IOException{
         bufferedWriter.newLine();
         bufferedWriter.append(JetFileStrings.PUBLIC);
         bufferedWriter.append(" void ");
@@ -118,7 +130,7 @@ class JetBusCreator {
         bufferedWriter.append("}");
     }
 
-    static void overrideEventFailure(BufferedWriter bufferedWriter,Map<String,HandlerMethods> handlerMethodsMap) throws IOException{
+    private static void overrideEventFailure(BufferedWriter bufferedWriter,Map<String,HandlerMethods> handlerMethodsMap) throws IOException{
         bufferedWriter.newLine();
         bufferedWriter.append(JetFileStrings.PUBLIC);
         bufferedWriter.append(" void ");
@@ -154,7 +166,7 @@ class JetBusCreator {
         bufferedWriter.append("}");
     }
 
-    static void createEventsGetter(BufferedWriter bufferedWriter,Map<String,HandlerMethods> handlerMethodsMap) throws IOException{
+    private static void createEventsGetter(BufferedWriter bufferedWriter,Map<String,HandlerMethods> handlerMethodsMap) throws IOException{
         bufferedWriter.newLine();
         bufferedWriter.append(JetFileStrings.PUBLIC);
         bufferedWriter.append(" ");
@@ -168,7 +180,7 @@ class JetBusCreator {
         bufferedWriter.append("}");
     }
 
-    static void createParentAccessor(BufferedWriter bufferedWriter) throws IOException{
+    private static void createParentAccessor(BufferedWriter bufferedWriter) throws IOException{
         bufferedWriter.newLine();
         bufferedWriter.append(JetFileStrings.PUBLIC);
         bufferedWriter.append(" ");
@@ -181,7 +193,7 @@ class JetBusCreator {
         bufferedWriter.append("}");
     }
 
-    static void endClass(BufferedWriter bufferedWriter) throws IOException {
+    private static void endClass(BufferedWriter bufferedWriter) throws IOException {
         bufferedWriter.newLine();
         bufferedWriter.append("}");
     }
