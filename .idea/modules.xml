@@ -4,8 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Jet.iml" filepath="$PROJECT_DIR$/Jet.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/jetcore/jetcore.iml" filepath="$PROJECT_DIR$/jetcore/jetcore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jet/jetp.iml" filepath="$PROJECT_DIR$/jet/jetp.iml" />
       <module fileurl="file://$PROJECT_DIR$/jetp/jet.iml" filepath="$PROJECT_DIR$/jetp/jet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jetcore/jetcore.iml" filepath="$PROJECT_DIR$/jetcore/jetcore.iml" />
       <module fileurl="file://$PROJECT_DIR$/jetprocessor/jetprocessor.iml" filepath="$PROJECT_DIR$/jetprocessor/jetprocessor.iml" />
     </modules>
   </component>

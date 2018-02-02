@@ -1,1 +1,1 @@
-include ':app', ':jetprocessor', ':jetcore', ':jetp'
+include ':app', ':jetprocessor', ':jetcore', ':jet'

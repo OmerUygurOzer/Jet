@@ -1,4 +1,4 @@
-package com.omerozer.jetprocessor;
+package com.omerozer.app;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import com.omerozer.jet.EventError;
 import com.omerozer.jet.EventSuccess;
 import com.omerozer.jet.Jet;
+import com.omerozer.jetprocessor.R;
 
 
 public class DemoActivity extends AppCompatActivity {

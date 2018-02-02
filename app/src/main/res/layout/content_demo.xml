@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.omerozer.jetprocessor.DemoActivity"
+    tools:context="com.omerozer.jetprocessor.com.omerozer.app.DemoActivity"
     tools:showIn="@layout/activity_demo">
 
     <TextView
