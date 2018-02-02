@@ -9,8 +9,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/jet" />
             <option value="$PROJECT_DIR$/jetcore" />
+            <option value="$PROJECT_DIR$/jetp" />
             <option value="$PROJECT_DIR$/jetprocessor" />
           </set>
         </option>
