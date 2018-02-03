@@ -14,8 +14,8 @@ allprojects {
   
   ```
   dependencies {
-      implementation 'com.github.OmerUygurOzer.jet:jetcore:v1.0.4'
-      annotationProcessor 'com.github.OmerUygurOzer.jet:jetprocessor:v1.0.4'
+      implementation 'com.github.OmerUygurOzer.jet:jetlib:v1.0.14'
+      annotationProcessor 'com.github.OmerUygurOzer.jet:jetprocessor:v1.0.14'
   }
    
    ```
