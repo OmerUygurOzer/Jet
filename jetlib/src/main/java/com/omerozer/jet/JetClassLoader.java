@@ -12,8 +12,8 @@ import java.util.Map;
 class JetClassLoader {
 
     private static final String JET_FACTORY = "JetFactory";
-    private static final String JET_EVENT_INDEX = "com.omerozer.jetcore.JetEventIndex";
-    private static final String ANDROID_THREAD_SWITCHER = "com.omerozer.jetcore.AndroidThreadSwitcher";
+    private static final String JET_EVENT_INDEX = "com.omerozer.jet.JetEventIndex";
+    private static final String ANDROID_THREAD_SWITCHER = "com.omerozer.jet.AndroidThreadSwitcher";
 
     private Map<Class<?>,Constructor<?>> CACHE = new LinkedHashMap<>();
 
